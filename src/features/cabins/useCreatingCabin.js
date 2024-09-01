@@ -10,7 +10,7 @@ function useCreatingCabin({ onClose }) {
       queryClient.invalidateQueries({
         queryKey: ["cabins"],
       });
-      onClose();
+      onClose?.();
     },
     onError: (err) => toast.error(err.message),
   });
