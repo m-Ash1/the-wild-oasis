@@ -7,7 +7,6 @@ function useDeleteCabin() {
 
   const { isLoading: isDeleting, mutate: deleteCabinMutator } = useMutation({
     mutationFn: deleteCabin,
-    //* hy3ml ll query deh t7dedan refetch fe kol el app 3shan y update el ui b3d el delete
     onSuccess: () => {
       toast.success("Cabin successfully deleted");
       queryClient.invalidateQueries({

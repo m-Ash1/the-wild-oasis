@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { isFuture, isPast, isToday } from "date-fns";
+import { useState } from "react";
 import supabase from "../services/supabase";
 import Button from "../ui/Button";
 import { subtractDates } from "../utils/helpers";
@@ -94,7 +94,7 @@ async function createBookings() {
     };
   });
 
-  console.log(finalBookings);
+  // console.log(finalBookings);
 
   const { error } = await supabase.from("bookings").insert(finalBookings);
   if (error) console.log(error.message);
@@ -125,6 +125,14 @@ function Uploader() {
     setIsLoading(false);
   }
 
+  async function resetDB() {
+    setIsLoading(true);
+    await deleteBookings();
+    await deleteGuests();
+    await deleteCabins();
+    setIsLoading(false);
+  }
+
   return (
     <div
       style={{
@@ -146,6 +154,9 @@ function Uploader() {
 
       <Button onClick={uploadBookings} disabled={isLoading}>
         Upload bookings ONLY
+      </Button>
+      <Button onClick={resetDB} disabled={isLoading}>
+        Reset Database
       </Button>
     </div>
   );

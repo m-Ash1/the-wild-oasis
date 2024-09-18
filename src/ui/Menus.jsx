@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { createContext, useContext, useState } from "react";
 import { HiEllipsisVertical } from "react-icons/hi2";
 import styled from "styled-components";
@@ -65,6 +66,9 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledLabel = styled.span`
+  width: max-content;
+`;
 const MenusContext = createContext();
 
 function Menus({ children }) {
@@ -72,7 +76,6 @@ function Menus({ children }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const openMenu = (id) => setOpenId(id);
   const closeMenu = () => setOpenId(null);
-  console.log("openId", openId);
   return (
     <MenusContext.Provider
       value={{ openId, openMenu, closeMenu, position, setPosition }}
@@ -120,7 +123,7 @@ function Button({ icon, children, onClick, disabled }) {
   return (
     <li>
       <StyledButton onClick={handleClick} disabled={disabled}>
-        {icon} {children}
+        {icon} <StyledLabel>{children}</StyledLabel>
       </StyledButton>
     </li>
   );
