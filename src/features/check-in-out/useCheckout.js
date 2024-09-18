@@ -5,7 +5,6 @@ import { updateBooking } from "../../services/apiBookings";
 
 function useCheckout() {
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
   const { isLoading: isCheckingOut, mutate: checkOutMutator } = useMutation({
     mutationFn: (bookingId) =>
       updateBooking(bookingId, {
