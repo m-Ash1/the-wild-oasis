@@ -48,6 +48,7 @@ function CabinRow({ cabin }) {
     description,
   } = cabin;
 
+
   // Making an instance from the query client
   const { isDeleting, deleteCabinMutator } = useDeleteCabin({});
   const { isDuplicating, createCabin: duplicateCabin } =
