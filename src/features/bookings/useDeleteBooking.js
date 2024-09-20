@@ -8,7 +8,7 @@ function useDeleteBooking() {
     mutationFn: deleteBooking,
     onSuccess: () => {
       toast.success("Booking deleted successfully");
-      queryClient.invalidateQueries("bookings");
+      queryClient.invalidateQueries({ queryKey: ["bookings"] });
     },
   });
   return { deleteBookingMutator, isDeleting };
