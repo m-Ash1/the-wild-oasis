@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
@@ -22,14 +22,28 @@ function UpdateUserDataForm() {
 
   const [fullName, setFullName] = useState(currentFullName);
   const [avatar, setAvatar] = useState(null);
+  const ref = useRef(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-    updateUserMutator({ fullName, avatar });
+    if (fullName)
+      updateUserMutator(
+        { fullName, avatar },
+        {
+          onSuccess: () => {
+            setAvatar(null);
+            ref.current.reset();
+          },
+        }
+      );
+  }
+  function handleCancel() {
+    setFullName(currentFullName);
+    setAvatar(null);
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form ref={ref} onSubmit={handleSubmit}>
       <FormRow label="Email address">
         <Input value={email} disabled />
       </FormRow>
@@ -39,6 +53,7 @@ function UpdateUserDataForm() {
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
           id="fullName"
+          disabled={isUpdating}
         />
       </FormRow>
       <FormRow label="Avatar image">
@@ -50,7 +65,11 @@ function UpdateUserDataForm() {
         />
       </FormRow>
       <FormRow>
-        <Button type="reset" variation="secondary">
+        <Button
+          type="reset"
+          variation="secondary"
+          onClick={handleCancel}
+        >
           Cancel
         </Button>
         <Button disabled={isUpdating} onClick={(e) => handleSubmit(e)}>

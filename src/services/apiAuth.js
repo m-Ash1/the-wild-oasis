@@ -42,7 +42,9 @@ export async function updateUser({ password, fullName, avatar }) {
   // Update the user's data
   const updateData = password
     ? { password }
-    : fullName
+    : fullName && !avatar
+    ? { data: { fullName } }
+    : avatar
     ? { data: { fullName, avatar } }
     : null;
 
