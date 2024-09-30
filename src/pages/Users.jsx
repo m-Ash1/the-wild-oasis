@@ -3,7 +3,7 @@ import SignUpForm from "../features/authentication/SignUpForm";
 import UsersTable from "../features/authentication/UsersTable";
 import Button from "../ui/Button";
 import Heading from "../ui/Heading";
-function Users() {
+function NewUsers() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -15,4 +15,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default NewUsers;

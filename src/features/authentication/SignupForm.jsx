@@ -5,7 +5,7 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import useSignUp from "./useSignUp";
 
-function SignupForm() {
+function SignUpForm() {
   const { register, handleSubmit, formState, getValues, reset } = useForm();
   const { signUpMutator, isSigningUp } = useSignUp();
   const { errors } = formState;
@@ -73,7 +73,7 @@ function SignupForm() {
           disabled={isSigningUp}
           type="password"
           {...register("passwordConfirm", {
-            required: "This field is required,",
+            required: "This field is required",
             validate: (value) =>
               value === getValues().password || "Passwords do not match",
           })}
@@ -96,4 +96,4 @@ function SignupForm() {
   );
 }
 
-export default SignupForm;
+export default SignUpForm;
