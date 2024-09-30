@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SignUpForm from "../features/authentication/SignUpForm";
+import SignUpForm from "../features/authentication/SignupForm";
 import UsersTable from "../features/authentication/UsersTable";
 import Button from "../ui/Button";
 import Heading from "../ui/Heading";
