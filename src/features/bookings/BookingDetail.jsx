@@ -13,7 +13,7 @@ import Modal from "../../ui/Modal";
 import Row from "../../ui/Row";
 import Spinner from "../../ui/Spinner";
 import Tag from "../../ui/Tag";
-import useCheckout from "../check-in-out/useCheckOut";
+import useCheckout from "../check-in-out/useCheckout";
 import BookingDataBox from "./BookingDataBox";
 import useBooking from "./useBooking";
 import useDeleteBooking from "./useDeleteBooking";
