@@ -7,6 +7,7 @@ import Button from "../../ui/Button";
 import ButtonGroup from "../../ui/ButtonGroup";
 import ButtonText from "../../ui/ButtonText";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import Empty from "../../ui/Empty";
 import Heading from "../../ui/Heading";
 import Modal from "../../ui/Modal";
 import Row from "../../ui/Row";
@@ -30,6 +31,8 @@ function BookingDetail() {
   const moveBack = useMoveBack();
 
   if (isLoading || isCheckingOut || isDeleting) return <Spinner />;
+  if (!booking) return <Empty resource={"bookings"} />;
+
   const { id: bookingId, status } = booking;
 
   const statusToTagName = {
