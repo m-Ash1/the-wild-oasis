@@ -18,6 +18,17 @@ function Login() {
       <Logo />
       <Heading as="h4">Log in into your account</Heading>
       <LoginForm />
+      <div style={{ textAlign: "center" }}>
+        <div>Guest Account</div>
+        <div>
+          <strong>Email: </strong>
+          guest@gmail.com
+        </div>
+        <div>
+          <strong>Password: </strong>
+          123123123
+        </div>
+      </div>
     </LoginLayout>
   );
 }
